@@ -8,37 +8,6 @@ from tkinter import filedialog
 # Local
 from student import Student
 
-
-'''
-Original File by David Katz...
-
-This is my script for CSIT 111 to take attendance.
- 
-The File Open dialog at the beginning can be used to select a CSV file
-exported from Brightspace's Grades page for the given course.
- 
-After a loop of all students in the roster, we repeat once to make sure we
-got everyone, and then finally save the list of absent students in a dated file.
-
-Edits by Veronica Noone 1/27/2025
-
-added Try/Except to prevent error when canceling file open.
-Added filename to make code more dynamic for use with multiple CSVs
-Modularized for readability
-took our references to CSIT 111 and made messaging more generic for use with other classes.
-Added list of potential responses to increase readability
-Edited display text slightly "they" to "you" etc. 
-
-Edits by David Katz 1/28/2025
-
-Split the code into four specific function calls to recycle the attendance-taking loops.
-Show different message for second iteration set for potentially absent students.
-Add more positive responses to accepted criteria.
-Refactored to snake_case variable names.
-Created Student class type to store first and last names.
-Further documentation.
-'''
-
 positive_responses = ["yes", "y", "yea", "p", "here", "present", "okay", "ok", "sure"]
 
 # Show a file open dialog to get file for later
@@ -82,6 +51,7 @@ def take_attendance(roster_list, repeat=False):
 		print(student.first_name + " " + student.last_name)
 		# Wait for user input on student presence
 		presence = input("\nAre you here?\n")
+		presence = presence.lower()
 		if presence in positive_responses:
 			print("Welcome to CSIT 111, " + student.first_name + "!\n")
 		else:
